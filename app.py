@@ -3,13 +3,13 @@ from groq import Groq
 from dotenv import load_dotenv
 import os
 
-# -------------------- Load API Key --------------------
+# Load API Key 
 load_dotenv()
 API_KEY = os.getenv("GROQ_API_KEY")
 
 client = Groq(api_key=API_KEY)
 
-# -------------------- Page Config --------------------
+# Page Config 
 st.set_page_config(
     page_title="AI ChatBot",
     page_icon="🤖",
@@ -17,7 +17,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# -------------------- Custom CSS --------------------
+#  Custom CSS 
 st.markdown("""
 <style>
 
@@ -35,11 +35,11 @@ div[data-testid="stChatMessage"]{
 </style>
 """, unsafe_allow_html=True)
 
-# -------------------- Chat History --------------------
+#Chat History
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# -------------------- Sidebar --------------------
+#  Sidebar 
 with st.sidebar:
 
     st.title("🤖 AI ChatBot")
@@ -90,7 +90,7 @@ and Llama 3.3 70B model.
 
     st.caption("App Version 1.0")
 
-# -------------------- Main Page --------------------
+#  Main Page 
 st.title("🤖 AI ChatBot")
 
 st.markdown("""
@@ -104,12 +104,12 @@ career, or general questions.
 if len(st.session_state.messages) == 0:
     st.info("👋 Welcome! Start chatting with your AI assistant.")
 
-# -------------------- Display Messages --------------------
+# Display Messages 
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# -------------------- Chat Input --------------------
+#  Chat Input 
 prompt = st.chat_input("💬 Ask me anything...")
 
 if prompt:
@@ -150,7 +150,7 @@ if prompt:
     except Exception as e:
         st.error(f"❌ {e}")
 
-# -------------------- Footer --------------------
+#  Footer 
 st.divider()
 
 st.markdown("""
